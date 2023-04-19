@@ -2,7 +2,7 @@ import MyProFormSelect from "../../common/components/MyProFormSelect";
 import request from "../../common/libs/request";
 
 
-export default function SchoolSelect({
+export default function AddressSelect({
    name,
    label,
    defaultValue = "",
@@ -11,12 +11,12 @@ export default function SchoolSelect({
  }: any) {
   return (
     <MyProFormSelect
-      name={name || "schools_id"}
-      label={label || "选择学校"}
-      placeholder="请选择公司"
+      name={name || "addresses_id"}
+      label={label || "选择场地"}
+      placeholder="请选择场地"
       showSearch
       request={async ({ keyWords }) => {
-        const res: any = await request("schools/list", {
+        const res: any = await request("addresses/list", {
           method: "POST",
           data: { keyword: keyWords || defaultValue },
         });
@@ -27,7 +27,7 @@ export default function SchoolSelect({
       }}
       fieldProps={{
         fieldNames: {
-          label: "name",
+          label: "address",
           value: "id",
         },
         ...fieldProps,

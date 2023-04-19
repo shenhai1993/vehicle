@@ -7,11 +7,11 @@ export default function Add( props:any) {
   return (
     <MyModalForm
       beforeSubmit={(values: any, item: any) => {
-        values.file = values.files[0].thumbUrl
-        delete values.files
+        // values.file = values.files[0].thumbUrl
+        // delete values.files
         request("/cars/add", {
           data: values,
-        }).then((res) => {
+        }).then((res:any) => {
           if (res?.code===0) {
             props.modalRef.current?.hideModal()
             props.actions.list()
